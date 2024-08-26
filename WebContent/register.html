@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<style>
+body{
+background-color:#16a085;
+}
+.custom-navbar {
+  background-color: #566573;
+  border: 2px solid #566573;
+}
+
+.custom-navbar .navbar-brand, 
+.custom-navbar .nav-link {
+  color: lightgreen;
+}
+
+.custom-navbar .nav-link.active {
+  color: lightgreen;
+}
+
+.custom-navbar .navbar-brand:hover,
+.custom-navbar .navbar-brand:focus{
+  text-decoration: none; /* Remove underline if any */
+  text-shadow: 4px 4px 6px rgba(0, 255, 0, 0.5); 
+}
+.custom-navbar .nav-link:hover, 
+.custom-navbar .nav-link:focus{
+  
+  animation:anime 0.5s;
+ outline-offset: 1px; 
+background-image: linear-gradient(#566573 90%,rgba(0, 255, 0, 0.3) 10%); 
+  color: lightgreen;  
+ 
+}
+
+.custom-navbar .nav-link:active{
+	outline-offset: 1px; 
+background-image: linear-gradient(#566573 0%,rgba(0, 255, 0, 0.3) 100%); 
+  color: lightgreen; 
+}
+@keyframes anime{
+0%{
+outline-offset: 1px; 
+background-image: linear-gradient(#566573 100%,rgba(0, 255, 0, 0.3) 0%); 
+  color: lightgreen; 
+}50%{
+outline-offset: 1px; 
+background-image: linear-gradient(#566573 0%,rgba(0, 255, 0, 0.3) 100%); 
+  color: lightgreen; 
+
+}100%{
+
+outline-offset: 1px; 
+background-image: linear-gradient(#566573 90%,rgba(0, 255, 0, 0.3) 10%); 
+  color: lightgreen; 
+}
+
+}
+.custom-navbar .nav-item {
+  margin-right: 20px; /* Adjust as needed */
+}
+
+.custom-navbar .nav-item:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+#cont{
+	background-color: #566573;
+	margin-top:50px;
+	width:400px;
+	border-radius:30px;
+	height:400px;
+	padding:0px 20px 0px 20px;
+	box-shadow:6px 6px 8px #1c2833;
+}
+#name{
+margin-top:20px;
+}
+.btn{
+	margin-top:30px;
+	color:lightgreen;
+}
+.form-label{
+color:lightgreen;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Light green shadow on focus */
+  border-color: lightgreen; /* Change border color to match the shadow */
+ /* Remove default outline */
+}
+#weak,,#medium{
+margin-bottom:0px;
+}
+#weak{
+color:red;
+text-shadow:0 0 8px rgba(255, 0, 0, 0.5); 
+}
+#medium{
+color:orange;
+text-shadow:0 0 8px rgba(255, 165, 0, 0.5); 
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="container-fluid">
+  
+    <a class="navbar-brand" href="index.html">SecuringData</a>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" id="rep" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Sign in</a>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="container" id="cont">
+<form class="row g-3"method="post" action="Reginfo">
+
+<div class="col-md-12">
+    <label for="inputName4" class="form-label" id="name">Name</label>
+    <input type="text" class="form-control" id="inputName4" name="name">
+  </div>
+<br>
+<div class="col-md-12">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4" name="email">
+  </div>
+  <div class="col-md-12">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4" name="password">
+    <div id="weak">
+      <p>too short add Caps,letters,symbols</p>
+    </div>
+    <div id="medium">
+    	<p>add some letters or symbols</p>
+    </div>
+  </div>
+ <div class="d-grid gap-2 col-6 mx-auto">
+<button type="submit" class="btn btn-success">SIGN UP</button>
+</div>
+</form>
+</div>
+<h1 class="m"></h1>
+<script>
+	const pass=document.getElementById("inputPassword4");
+	const but=document.querySelector(".btn-success");
+	const weak=document.getElementById("weak");
+	const medium=document.getElementById("medium");
+	weak.style.display="none";
+	medium.style.display="none";
+	const val=pass.value;
+	but.disabled=false;
+	but.style.marginTop="30px";
+	console.log(pass);
+	pass.addEventListener("input",function(e){
+		const val=e.target.value;
+		switch(stren(val)){
+		case 0:
+			pass.style.boxShadow="0 0 8px rgba(0, 255, 0, 0.5)";
+			pass.style.borderColor="lightgreen";
+			but.disabled=false;
+			weak.style.display="none";
+			medium.style.display="none";
+			break;
+		case 1:
+			pass.style.boxShadow="0 0 8px rgba(255, 165, 0, 0.5)";
+			pass.style.borderColor="orange";
+			weak.style.display="none";
+			medium.style.display="block";
+			but.style.marginTop="0px";
+			but.disabled=true;
+			break;
+		case 2:
+			pass.style.boxShadow="0 0 8px rgba(255, 0, 0, 0.5)";
+			pass.style.borderColor="red";
+			but.disabled=true;
+			weak.style.display="inline";
+			medium.style.display="none";
+			but.style.marginTop="0px";
+			break;
+		case 3:
+			pass.style.boxShadow="0 0 8px rgba(255, 255, 255, 0.5)";
+			pass.style.borderColor="white";
+			but.disabled=true;
+			weak.style.display="none";
+			medium.style.display="none";
+			break;
+		default:
+			break;
+
+		}
+	})
+	function stren(val){
+		let ans=0;
+		let upper=0;
+		let lower=0;
+		let num=0;
+		let spec=0;
+		for(let char of val){
+			if (/[a-z]/.test(char)) {
+			        lower++;
+			 } else if (/[A-Z]/.test(char)) {
+			        upper++;
+			  }else if(/[0-9]/.test(char)){
+				  num++;
+			  }else if (/[^a-zA-Z0-9]/.test(char)){
+				  spec++;
+			  }
+		}
+		console.log(spec);
+		if(val.length==0){
+			return 3;
+		}else if(val.length<5||upper==0&&num==0&&spec==0){
+			return 2;
+		}else if(upper>0||num>2&&spec>0){
+			return 0;
+		}else if((upper>0&&num==0||spec==0)||(upper==0&&num>1||spec>0)){
+			
+			return 1;
+		}
+		
+	}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
